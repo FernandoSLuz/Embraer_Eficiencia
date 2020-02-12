@@ -7,6 +7,7 @@ from flask import session
 def test_broadcast_message(message):
     if(isinstance(message, str)):
         message = json.loads(message)
+    print("recieved message")
     content = message['content']
     emit_type = message['emit_type']
     emit('my_response', {'emit_type': emit_type, 'content': content}, broadcast=True)
