@@ -14,7 +14,7 @@ def background_thread():
         count += 1
         socketio.emit('my_response',
                       {'data': 'Server generated event', 'count': count},
-                      namespace='/test')
+                      namespace='/embraer')
 
 @socketio.on('disconnect_request', namespace='/embraer')
 def disconnect_request():
