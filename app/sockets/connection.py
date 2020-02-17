@@ -33,7 +33,7 @@ def disconnect_request():
 def ping_pong():
     emit('my_pong')
 
-@socketio.on('connect', namespace='/embraer')
+@socketio.on('connect')
 def test_connect():
     global thread
     print("aaa")
@@ -42,6 +42,6 @@ def test_connect():
             thread = socketio.start_background_task(background_thread)
     emit('my_response', {'data': 'Connected', 'count': 0})
 
-@socketio.on('disconnect', namespace='/embraer')
+@socketio.on('disconnect')
 def test_disconnect():
     print('Client disconnected', request.sid)
