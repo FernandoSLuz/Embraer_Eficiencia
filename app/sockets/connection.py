@@ -13,10 +13,9 @@ def background_thread():
         socketio.sleep(10)
         count += 1
         socketio.emit('my_response',
-                      {'data': 'Server generated event', 'count': count},
-                      namespace='/embraer')
+                      {'data': 'Server generated event', 'count': count})
 
-@socketio.on('disconnect_request', namespace='/embraer')
+@socketio.on('disconnect_request')
 def disconnect_request():
     @copy_current_request_context
     def can_disconnect():
@@ -30,7 +29,7 @@ def disconnect_request():
          {'data': 'Disconnected!', 'count': session['receive_count']},
          callback=can_disconnect)
 
-@socketio.on('my_ping', namespace='/embraer')
+@socketio.on('my_ping')
 def ping_pong():
     emit('my_pong')
 
